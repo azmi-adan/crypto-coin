@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="mining-section">
+    <h2>Mine a New Block</h2>
+    
+    {% if block %}
+    <div class="success-message">
+        <h3>Block Mined Successfully!</h3>
+        <div class="block-details">
+            <div class="detail">
+                <span>Index:</span>
+                <span>{{ block.index }}</span>
+            </div>
+            <div class="detail">
+                <span>Proof:</span>
+                <span>{{ block.proof }}</span>
+            </div>
+            <div class="detail">
+                <span>Previous Hash:</span>
+                <span class="hash">{{ block.previous_hash }}</span>
+            </div>
+            <div class="detail">
+                <span>Transactions:</span>
+                <ul class="transactions-list">
+                    {% for transaction in block.transactions %}
+                    <li>
+                        <span>{{ transaction.sender[:8] }}...</span> → 
+                        <span>{{ transaction.recipient[:8] }}...</span> : 
+                        <span>{{ transaction.amount }} CC</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="mining-controls">
+        <p>Click the button below to mine a new block and receive your mining reward.</p>
+        <form action="{{ url_for('mine') }}" method="GET">
+            <button type="submit" class="btn btn-primary mining-btn">
+                <span class="btn-text">Mine Block</span>
+                <span class="btn-icon">⛏️</span>
+            </button>
+        </form>
+    </div>
+
+    <div class="mining-info">
+        <h3>Mining Information</h3>
+        <p>Current difficulty: 4 leading zeros</p>
+        <p>Mining reward: 1 CryptoChain (CC)</p>
+        <p>Your node ID: {{ node_identifier[:8] }}...</p>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="chain-section">
+    <h2>Blockchain Explorer</h2>
+    <p class="chain-length">Total blocks: {{ chain|length }}</p>
+    
+    <div class="blocks-container">
+        {% for block in chain|reverse %}
+        <div class="block-card">
+            <div class="block-header">
+                <h3>Block #{{ block.index }}</h3>
+                <span class="block-hash">{{ block.previous_hash[:10] }}...</span>
+            </div>
+            
+            <div class="block-details">
+                <div class="detail">
+                    <span>Timestamp:</span>
+                    <span>{{ block.timestamp|datetime }}</span>
+                </div>
+                <div class="detail">
+                    <span>Proof:</span>
+                    <span>{{ block.proof }}</span>
+                </div>
+                <div class="detail">
+                    <span>Transactions:</span>
+                    <span>{{ block.transactions|length }}</span>
+                </div>
+            </div>
+            
+            {% if block.transactions %}
+            <div class="transactions-preview">
+                <h4>Transactions:</h4>
+                <ul>
+                    {% for tx in block.transactions[:3] %}
+                    <li>
+                        {{ tx.sender[:5] }}... → {{ tx.recipient[:5] }}... : {{ tx.amount }} CC
+                    </li>
+                    {% endfor %}
+                    {% if block.transactions|length > 3 %}
+                    <li>...and {{ block.transactions|length - 3 }} more</li>
+                    {% endif %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

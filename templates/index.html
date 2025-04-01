@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h2>Decentralized. Secure. Transparent.</h2>
+        <p>Welcome to CryptoChain, a simple implementation of a cryptocurrency blockchain in Python.</p>
+        <div class="cta-buttons">
+            <a href="{{ url_for('mine') }}" class="btn btn-primary">Start Mining</a>
+            <a href="{{ url_for('new_transaction') }}" class="btn btn-secondary">Create Transaction</a>
+        </div>
+    </div>
+</section>
+
+<section class="stats">
+    <div class="stat-card">
+        <h3>{{ blockchain.chain|length }}</h3>
+        <p>Blocks Mined</p>
+    </div>
+    <div class="stat-card">
+        <h3>{{ blockchain.current_transactions|length }}</h3>
+        <p>Pending Transactions</p>
+    </div>
+    <div class="stat-card">
+        <h3>{{ node_identifier[:8] }}...</h3>
+        <p>Your Node ID</p>
+    </div>
+</section>
+
+<section class="how-it-works">
+    <h2>How CryptoChain Works</h2>
+    <div class="steps">
+        <div class="step">
+            <div class="step-number">1</div>
+            <h3>Create Transactions</h3>
+            <p>Send and receive CryptoChain coins between nodes.</p>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <h3>Mine Blocks</h3>
+            <p>Solve the Proof of Work to add new blocks to the chain.</p>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <h3>Validate Chain</h3>
+            <p>The network reaches consensus on the valid blockchain.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
