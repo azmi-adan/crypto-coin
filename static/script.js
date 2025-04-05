@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
             navMenu.classList.remove('active');
             menuToggle.classList.remove('active');
         });
-    });
+    }); 
 
     // Format timestamps
     document.querySelectorAll('.timestamp').forEach(el => {

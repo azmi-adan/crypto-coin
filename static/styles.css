@@ -937,8 +937,8 @@ footer {
     background: linear-gradient(to right, var(--highlight-color), var(--accent-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-}
-
+}   
+  
 .footer-links {
     display: flex;
     gap: 2rem;

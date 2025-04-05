@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request, render_template, redirect, url_for
 from blockchain import Blockchain
 from uuid import uuid4
-import time
+import time 
 from datetime import datetime
 # Instantiate the Node
 app = Flask(__name__)
