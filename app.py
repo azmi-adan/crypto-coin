@@ -20,7 +20,7 @@ blockchain = Blockchain()
 @app.route('/')
 def home():
     return redirect(url_for('index'))
-
+ 
 @app.route('/index')
 def index():
     return render_template('index.html',
